@@ -9,7 +9,9 @@
     <div class="contenitore">
       <h2>Cose Da Fare</h2>
       <input type="text" id="input" placeholder="New Task" required />
-      <button  id ="bottone" onclick="scrivo()">Add<img src=".//img/indice.png" /></button>
+      <button id="bottone" onclick="scrivo()">
+        Add<img src=".//img/indice.png" />
+      </button>
     </div>
     <!--     <div class="output">sddssd</div>
  -->
@@ -23,7 +25,7 @@
       .contenitore {
         background-color: rgb(56, 56, 65);
         text-align: left;
-        width: 375px;
+        width: 360px;
         min-height: 150px;
         align-content: initial;
         border-radius: 10px;
@@ -33,7 +35,7 @@
       .output {
         display: flex;
         background-color: rgb(56, 56, 65);
-        width: 375px;
+        width: 360px;
         height: 30px;
         margin: 15px auto auto auto;
         border-radius: 10px;
@@ -42,9 +44,13 @@
       }
       .outputTesto {
         font-size: 1em;
+        width: 70%;
         text-align: left;
         align-content: center;
         font-weight: 800;
+        align-items: center;
+        margin: auto;
+        padding: 0px;
       }
 
       .bottoneOutput {
@@ -54,7 +60,9 @@
         align-content: center;
         align-items: center;
         box-sizing: content-box;
-        margin-right: 5px;     
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
       }
 
       h2 {
@@ -68,6 +76,12 @@
         margin-left: 15px;
         width: 80%;
       }
+
+      del{
+        color:black;
+      }
+
+
 
       #bottone {
         display: block;
@@ -96,7 +110,7 @@
         let input = document.getElementById("input");
         let testo = document.createElement("h2");
         let bottoneCompleto = document.createElement("button");
-        
+
         let imgV = document.createElement("img");
         imgV.src = ".//img/taskcompletata.png";
         imgV.alt = "taskcompletata";
@@ -109,7 +123,6 @@
         imgE.alt = "taskeliminata";
         imgE.style.width = "20px";
         imgE.style.height = "20px";
-        
 
         if (input.value != "") {
           testo.textContent = `${input.value}`;
@@ -119,6 +132,7 @@
           bottoneElimina.classList = "bottoneOutput";
           console.log(testo);
           console.log(risultato);
+          imgV.addEventListener("click",barraTesto);
           bottoneCompleto.appendChild(imgV);
           bottoneElimina.appendChild(imgE);
 
@@ -130,13 +144,17 @@
         } else {
           alert("Attenzione: non hai scritto nulla. Inserire qualcosa da fare");
         }
+
+        // Funzione interna per barrare il testo
+        function barraTesto() {
+          if (testo.innerHTML.includes("<del>")) {
+            // Se è già barrato, rimuovi <del>
+            testo.innerHTML = testo.textContent;
+          } else {
+            testo.innerHTML = `<del>${testo.textContent}</del>`;
+          }
+        }
       }
-
-
-
-
-
-
     </script>
   </body>
 </html>
