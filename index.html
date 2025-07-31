@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cose Da Fare</title>
+  </head>
+  <body>
+    <div class="contenitore">
+      <h2>Cose Da Fare</h2>
+      <input type="text" id="input" placeholder="New Task" required />
+      <button  id ="bottone" onclick="scrivo()">Add<img src=".//img/indice.png" /></button>
+    </div>
+    <!--     <div class="output">sddssd</div>
+ -->
+    <style>
+      html,
+      body {
+        background-color: navajowhite;
+        color: white;
+        align-content: center;
+      }
+      .contenitore {
+        background-color: rgb(56, 56, 65);
+        text-align: left;
+        width: 375px;
+        min-height: 150px;
+        align-content: initial;
+        border-radius: 10px;
+        text-align: left;
+        margin: auto;
+      }
+      .output {
+        display: flex;
+        background-color: rgb(56, 56, 65);
+        width: 375px;
+        height: 30px;
+        margin: 15px auto auto auto;
+        border-radius: 10px;
+        align-items: center;
+        text-align: center;
+      }
+      .outputTesto {
+        font-size: 1em;
+        text-align: left;
+        align-content: center;
+        font-weight: 800;
+      }
+
+      .bottoneOutput {
+        height: 20px;
+        width: 20px;
+        background-color: rgb(210, 166, 100);
+        align-content: center;
+        align-items: center;
+        box-sizing: content-box;
+        margin-right: 5px;     
+      }
+
+      h2 {
+        padding-top: 12px;
+        margin-left: 15px;
+      }
+      input {
+        border: solid 2px white;
+        background-color: white;
+        border-radius: 5px;
+        margin-left: 15px;
+        width: 80%;
+      }
+
+      #bottone {
+        display: block;
+        margin: 15px;
+        background-color: blue;
+        border-radius: 5px;
+        border: none;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-weight: 700;
+      }
+
+      button img {
+        width: 30%;
+        height: 50%;
+      }
+    </style>
+
+    <script>
+      /* inizia JS */
+
+      function scrivo() {
+        let risultato = document.createElement("div");
+
+        let input = document.getElementById("input");
+        let testo = document.createElement("h2");
+        let bottoneCompleto = document.createElement("button");
+        
+        let imgV = document.createElement("img");
+        imgV.src = ".//img/taskcompletata.png";
+        imgV.alt = "taskcompletata";
+        imgV.style.width = "20px";
+        imgV.style.height = "20px";
+
+        let bottoneElimina = document.createElement("button");
+        let imgE = document.createElement("img");
+        imgE.src = ".//img/taskeliminata.png";
+        imgE.alt = "taskeliminata";
+        imgE.style.width = "20px";
+        imgE.style.height = "20px";
+        
+
+        if (input.value != "") {
+          testo.textContent = `${input.value}`;
+          risultato.classList = "output";
+          testo.classList = "outputTesto";
+          bottoneCompleto.classList = "bottoneOutput";
+          bottoneElimina.classList = "bottoneOutput";
+          console.log(testo);
+          console.log(risultato);
+          bottoneCompleto.appendChild(imgV);
+          bottoneElimina.appendChild(imgE);
+
+          risultato.appendChild(testo);
+          risultato.appendChild(bottoneCompleto);
+          risultato.appendChild(bottoneElimina);
+          document.body.appendChild(risultato);
+          document.getElementById("input").value = "";
+        } else {
+          alert("Attenzione: non hai scritto nulla. Inserire qualcosa da fare");
+        }
+      }
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
