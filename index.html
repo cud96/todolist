@@ -77,11 +77,9 @@
         width: 80%;
       }
 
-      del{
-        color:black;
+      del {
+        color: black;
       }
-
-
 
       #bottone {
         display: block;
@@ -132,7 +130,7 @@
           bottoneElimina.classList = "bottoneOutput";
           console.log(testo);
           console.log(risultato);
-          imgV.addEventListener("click",barraTesto);
+          imgV.addEventListener("click", barraTesto);
           bottoneCompleto.appendChild(imgV);
           bottoneElimina.appendChild(imgE);
 
@@ -153,6 +151,12 @@
           } else {
             testo.innerHTML = `<del>${testo.textContent}</del>`;
           }
+        }
+        imgE.addEventListener("click", elimina);
+
+        //funzione per eliminare la voce
+        function elimina() {
+          risultato.remove();
         }
       }
     </script>
